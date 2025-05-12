@@ -39,11 +39,13 @@ st.markdown(
             font-size: 1rem;
             font-weight: 400;
             background-color: white !important;  /* Search bar background */
+            text-align: center !important;  /* Center the text */
         }
 
-        /* Ensure placeholder text is visible on mobile */
+        /* Ensure placeholder text is visible and centered on mobile */
         .stTextInput input::placeholder {
             color: #666 !important;  /* Placeholder color */
+            text-align: center !important;  /* Center the placeholder text */
         }
     }
 
@@ -62,6 +64,7 @@ st.markdown(
         font-size: 1rem;
         color: #666 !important;  /* Text color */
         background-color: white !important;  /* Search bar background */
+        text-align: center !important;  /* Center the text */
     }
 
     /* Style the search button */
