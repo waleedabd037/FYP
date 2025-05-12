@@ -40,6 +40,11 @@ st.markdown(
             font-weight: 400;
             background-color: white !important;  /* Search bar background */
         }
+
+        /* Ensure placeholder text is visible on mobile */
+        .stTextInput input::placeholder {
+            color: #666 !important;  /* Placeholder color */
+        }
     }
 
     h1 {
