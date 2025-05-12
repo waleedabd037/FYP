@@ -10,7 +10,7 @@ load_dotenv()
 # Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS for green background and responsive font
+# Custom CSS: green background + black text across all devices
 st.markdown(
     """
     <style>
@@ -21,8 +21,15 @@ st.markdown(
         background: linear-gradient(to bottom right, #d0f0c0, #a8e6a2, #8bcf88);
         font-family: 'Segoe UI', sans-serif;
         font-size: 16px;
+        color: black !important;
     }
 
+    /* Ensure all text elements are black */
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: black !important;
+    }
+
+    /* Responsive font size for mobile */
     @media only screen and (max-width: 768px) {
         html, body, .stApp {
             font-size: 14px;
@@ -42,6 +49,11 @@ st.markdown(
 
     .stTextInput > div > div > input {
         font-size: 1rem;
+        color: black !important;
+    }
+
+    .stButton>button {
+        color: black !important;
     }
     </style>
     """,
