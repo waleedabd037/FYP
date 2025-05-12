@@ -7,10 +7,10 @@ from data_loader import DataLoader
 # Load environment variables
 load_dotenv()
 
-# Set page config
+# Set Streamlit page configuration
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS for blue background, black text, and white button
+# Custom CSS
 st.markdown(
     """
     <style>
@@ -18,17 +18,12 @@ st.markdown(
         height: 100%;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom right, #d0e8ff, #a0c8ff, #70b0ff);
+        background: linear-gradient(to bottom right, #d0eaff, #a3c9f9, #79b1f3);
         font-family: 'Segoe UI', sans-serif;
         font-size: 16px;
-        color: black !important;
+        color: black;
     }
 
-    h1, h2, h3, h4, h5, h6, p, span, div {
-        color: black !important;
-    }
-
-    /* Responsive font size for mobile */
     @media only screen and (max-width: 768px) {
         html, body, .stApp {
             font-size: 14px;
@@ -39,57 +34,62 @@ st.markdown(
         font-size: 2.2rem !important;
         text-align: center;
         margin-top: 1rem;
+        color: black;
     }
 
     p {
         font-size: 1.1rem;
         text-align: center;
+        color: black;
     }
 
     .stTextInput > div > div > input {
-        font-size: 1rem;
-        color: black !important;
-    }
-
-    /* Style the search button */
-    .stButton>button {
         background-color: white !important;
         color: black !important;
         border: 1px solid #ccc !important;
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 6px;
+        padding: 0.5rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
     }
 
-    .stButton>button:hover {
+    button[kind="primary"] {
+        background-color: white !important;
+        color: black !important;
+        border: 1px solid #555 !important;
+        border-radius: 8px !important;
+        padding: 0.4rem 1rem !important;
+        font-weight: bold;
+    }
+
+    button[kind="primary"]:hover {
         background-color: #f0f0f0 !important;
+        color: black !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title and intro
+# Title and description
 st.markdown("<h1>📚 Virtual Research Assistant</h1>", unsafe_allow_html=True)
 st.markdown("<p>Find, summarize, and analyze top research papers on any topic!</p>", unsafe_allow_html=True)
 st.markdown("---")
 
-# Retrieve API Key
+# API Key check
 groq_api_key = os.getenv("GROQ_API_KEY")
 if not groq_api_key:
     st.error("❌ GROQ_API_KEY is missing. Please set it in your environment variables.")
     st.stop()
 
-# Initialize agents and data loader
+# Initialize AI agents and data loader
 agents = ResearchAgents(groq_api_key)
 data_loader = DataLoader()
 
-# User input
+# Search input
 st.markdown("### 🔍 Enter Your Research Topic Below")
 query = st.text_input("Topic", placeholder="e.g., Large Language Models in Healthcare")
 
-# Search and process
+# On button click
 if st.button("🔎 Search"):
     with st.spinner("Fetching and analyzing research papers..."):
         arxiv_papers = data_loader.fetch_arxiv_papers(query)
