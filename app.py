@@ -10,7 +10,7 @@ load_dotenv()
 # Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS: green background + black text across all devices
+# Custom CSS for blue background, black text, and white button
 st.markdown(
     """
     <style>
@@ -18,13 +18,12 @@ st.markdown(
         height: 100%;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom right, #d0f0c0, #a8e6a2, #8bcf88);
+        background: linear-gradient(to bottom right, #d0e8ff, #a0c8ff, #70b0ff);
         font-family: 'Segoe UI', sans-serif;
         font-size: 16px;
         color: black !important;
     }
 
-    /* Ensure all text elements are black */
     h1, h2, h3, h4, h5, h6, p, span, div {
         color: black !important;
     }
@@ -52,8 +51,19 @@ st.markdown(
         color: black !important;
     }
 
+    /* Style the search button */
     .stButton>button {
+        background-color: white !important;
         color: black !important;
+        border: 1px solid #ccc !important;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+
+    .stButton>button:hover {
+        background-color: #f0f0f0 !important;
     }
     </style>
     """,
