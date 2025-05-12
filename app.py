@@ -10,7 +10,7 @@ load_dotenv()
 # Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS for background, fonts, and input/button styling
+# Custom CSS for blue background, black text, and white button
 st.markdown(
     """
     <style>
@@ -28,9 +28,16 @@ st.markdown(
         color: black !important;
     }
 
+    /* Responsive font size for mobile */
     @media only screen and (max-width: 768px) {
         html, body, .stApp {
             font-size: 14px;
+        }
+
+        .stTextInput > div > div > input {
+            color: black !important;
+            font-size: 1rem;
+            font-weight: 400;
         }
     }
 
@@ -45,13 +52,9 @@ st.markdown(
         text-align: center;
     }
 
-    /* Style for the text input */
     .stTextInput > div > div > input {
-        background-color: white !important;
-        color: black !important;
-        border: 1px solid #ccc !important;
-        padding: 0.5rem;
         font-size: 1rem;
+        color: #666 !important;
     }
 
     /* Style the search button */
