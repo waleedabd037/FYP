@@ -35,9 +35,10 @@ st.markdown(
         }
 
         .stTextInput > div > div > input {
-            color: black !important;
+            color: #666 !important;  /* Text color */
             font-size: 1rem;
             font-weight: 400;
+            background-color: white !important;  /* Search bar background */
         }
     }
 
@@ -54,7 +55,8 @@ st.markdown(
 
     .stTextInput > div > div > input {
         font-size: 1rem;
-        color: #666 !important;
+        color: #666 !important;  /* Text color */
+        background-color: white !important;  /* Search bar background */
     }
 
     /* Style the search button */
