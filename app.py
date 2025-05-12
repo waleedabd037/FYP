@@ -40,6 +40,7 @@ st.markdown(
             font-weight: 400;
             background-color: white !important;  /* Search bar background */
             text-align: center !important;  /* Center the text */
+            line-height: 2.5rem;  /* Adjust line height to center text */
         }
 
         /* Ensure placeholder text is visible and centered on mobile */
@@ -65,6 +66,7 @@ st.markdown(
         color: #666 !important;  /* Text color */
         background-color: white !important;  /* Search bar background */
         text-align: center !important;  /* Center the text */
+        line-height: 2.5rem;  /* Adjust line height to center text */
     }
 
     /* Style the search button */
