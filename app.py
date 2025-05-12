@@ -10,7 +10,7 @@ load_dotenv()
 # Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Responsive CSS styling for consistent design
+# Custom CSS for green background and responsive font
 st.markdown(
     """
     <style>
@@ -18,12 +18,11 @@ st.markdown(
         height: 100%;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom right, #e0f7fa, #b3e5fc, #81d4fa);
+        background: linear-gradient(to bottom right, #d0f0c0, #a8e6a2, #8bcf88);
         font-family: 'Segoe UI', sans-serif;
         font-size: 16px;
     }
 
-    /* Responsive font for smaller devices */
     @media only screen and (max-width: 768px) {
         html, body, .stApp {
             font-size: 14px;
@@ -60,7 +59,7 @@ if not groq_api_key:
     st.error("❌ GROQ_API_KEY is missing. Please set it in your environment variables.")
     st.stop()
 
-# Initialize AI agents and data loader
+# Initialize agents and data loader
 agents = ResearchAgents(groq_api_key)
 data_loader = DataLoader()
 
