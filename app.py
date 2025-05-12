@@ -6,28 +6,52 @@ from data_loader import DataLoader
 
 # Load environment variables
 load_dotenv()
+
+# Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
-# Custom CSS for background
+
+# Responsive CSS styling for consistent design
 st.markdown(
     """
     <style>
-    body {
+    html, body, .stApp {
+        height: 100%;
+        margin: 0;
+        padding: 0;
         background: linear-gradient(to bottom right, #e0f7fa, #b3e5fc, #81d4fa);
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 16px;
     }
-    .stApp {
-        background: linear-gradient(to bottom right, #e0f7fa, #b3e5fc, #81d4fa);
+
+    /* Responsive font for smaller devices */
+    @media only screen and (max-width: 768px) {
+        html, body, .stApp {
+            font-size: 14px;
+        }
+    }
+
+    h1 {
+        font-size: 2.2rem !important;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .stTextInput > div > div > input {
+        font-size: 1rem;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Page Configuration
-
-
-# Title and Intro
-st.markdown("<h1 style='text-align: center;'>📚 Virtual Research Assistant</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size: 18px;'>Find, summarize, and analyze top research papers on any topic!</p>", unsafe_allow_html=True)
+# Title and intro
+st.markdown("<h1>📚 Virtual Research Assistant</h1>", unsafe_allow_html=True)
+st.markdown("<p>Find, summarize, and analyze top research papers on any topic!</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 # Retrieve API Key
@@ -36,14 +60,15 @@ if not groq_api_key:
     st.error("❌ GROQ_API_KEY is missing. Please set it in your environment variables.")
     st.stop()
 
-# Initialize agents and data loader
+# Initialize AI agents and data loader
 agents = ResearchAgents(groq_api_key)
 data_loader = DataLoader()
 
-# User Input Section
+# User input
 st.markdown("### 🔍 Enter Your Research Topic Below")
 query = st.text_input("Topic", placeholder="e.g., Large Language Models in Healthcare")
 
+# Search and process
 if st.button("🔎 Search"):
     with st.spinner("Fetching and analyzing research papers..."):
         arxiv_papers = data_loader.fetch_arxiv_papers(query)
