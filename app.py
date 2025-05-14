@@ -10,7 +10,7 @@ load_dotenv()
 # Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS - updated to blue gradient and modified input/button styles
+# Custom CSS - updated to blue gradient and custom styles for input and button
 st.markdown(
     """
     <style>
