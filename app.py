@@ -88,19 +88,19 @@ data_loader = DataLoader()
 # Input and automatic trigger
 st.markdown("### 🔍 Enter Your Research Topic Below")
 
-search_trigger = st.session_state.get("search_trigger", False)
+# Initialize search_trigger session state
+if 'search_trigger' not in st.session_state:
+    st.session_state.search_trigger = False
 
+# Define a function to trigger search
 def trigger_search():
     st.session_state.search_trigger = True
 
+# Capture input and trigger search on Enter or when search button is clicked
 query = st.text_input("Topic", placeholder="e.g., Large Language Models in Healthcare", on_change=trigger_search, key="query_input")
 
-# Search button (manually resets trigger to True)
+# Manually trigger search with the button click
 if st.button("🔎 Search"):
-    st.session_state.search_trigger = True
-
-# Trigger search on "Enter" key press
-if query and search_trigger:
     st.session_state.search_trigger = True
 
 # Only process if triggered and query is present
