@@ -10,7 +10,7 @@ load_dotenv()
 # Set page config
 st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS - updated to blue gradient
+# Custom CSS - updated to blue gradient and modified input/button styles
 st.markdown(
     """
     <style>
@@ -23,30 +23,48 @@ st.markdown(
         font-size: 16px;
         color: black !important;
     }
+
     h1, h2, h3, h4, h5, h6, p, span, div {
         color: black !important;
     }
+
     @media only screen and (max-width: 768px) {
         html, body, .stApp {
             font-size: 14px;
         }
     }
+
     h1 {
         font-size: 2.2rem !important;
         text-align: center;
         margin-top: 1rem;
     }
+
     p {
         font-size: 1.1rem;
         text-align: center;
     }
+
+    /* Custom styles for search input and button */
     .stTextInput > div > div > input {
+        background-color: white !important;
+        color: black !important;
         font-size: 1rem;
-        color: black !important;
+        padding: 10px;
     }
-    .stButton>button {
+
+    .stButton > button {
+        background-color: white !important;
         color: black !important;
+        font-size: 1rem;
+        padding: 10px;
+        border: 1px solid black !important;
     }
+
+    .stButton > button:hover {
+        background-color: #f0f0f0 !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True
