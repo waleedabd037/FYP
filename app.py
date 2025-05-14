@@ -99,6 +99,10 @@ query = st.text_input("Topic", placeholder="e.g., Large Language Models in Healt
 if st.button("🔎 Search"):
     st.session_state.search_trigger = True
 
+# Trigger search on "Enter" key press
+if query and search_trigger:
+    st.session_state.search_trigger = True
+
 # Only process if triggered and query is present
 if st.session_state.get("search_trigger") and st.session_state.get("query_input"):
     query = st.session_state.query_input
