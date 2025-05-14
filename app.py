@@ -92,7 +92,11 @@ st.markdown("### 🔍 Enter Your Research Topic Below")
 if 'search_trigger' not in st.session_state:
     st.session_state.search_trigger = False
 
-# Define a function to trigger search
+# Initialize the query session state
+if 'query_input' not in st.session_state:
+    st.session_state.query_input = ''
+
+# Define a function to trigger search when text input changes or button is pressed
 def trigger_search():
     st.session_state.search_trigger = True
 
