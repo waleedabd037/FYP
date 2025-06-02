@@ -8,9 +8,9 @@ from data_loader import DataLoader
 load_dotenv()
 
 # Set page config
-st.set_page_config(page_title="Virtual Research Assistant", page_icon="📚", layout="wide")
+st.set_page_config(page_title="Zyntra: Virtual Research Assistant", page_icon="📚", layout="wide")
 
-# Custom CSS - updated to blue gradient and custom styles for input and button
+# Custom CSS - updated to blue gradient
 st.markdown(
     """
     <style>
@@ -23,55 +23,40 @@ st.markdown(
         font-size: 16px;
         color: black !important;
     }
-
     h1, h2, h3, h4, h5, h6, p, span, div {
         color: black !important;
     }
-
     @media only screen and (max-width: 768px) {
         html, body, .stApp {
             font-size: 14px;
         }
     }
-
     h1 {
         font-size: 2.2rem !important;
         text-align: center;
         margin-top: 1rem;
     }
-
     p {
         font-size: 1.1rem;
         text-align: center;
     }
-
-    /* Custom styles for search input and button */
     .stTextInput > div > div > input {
-        background-color: white !important;
-        color: black !important;
         font-size: 1rem;
-        padding: 10px;
-    }
-
-    .stButton > button {
-        background-color: white !important;
         color: black !important;
-        font-size: 1rem;
-        padding: 10px;
-        border: 1px solid black !important;
     }
-
-    .stButton > button:hover {
-        background-color: #f0f0f0 !important;
+    .stButton>button {
+        color: black !important;
     }
-
     </style>
     """,
     unsafe_allow_html=True
 )
 
 # Title and intro
-st.markdown("<h1>📚 Virtual Research Assistant</h1>", unsafe_allow_html=True)
+st.markdown(
+    "<h1>📚 Zyntra: <span style=\"font-weight: normal;\">Virtual Research Assistant</span></h1>",
+    unsafe_allow_html=True
+)
 st.markdown("<p>Find, summarize, and analyze top research papers on any topic!</p>", unsafe_allow_html=True)
 st.markdown("---")
 
@@ -88,22 +73,14 @@ data_loader = DataLoader()
 # Input and automatic trigger
 st.markdown("### 🔍 Enter Your Research Topic Below")
 
-# Initialize search_trigger session state
-if 'search_trigger' not in st.session_state:
-    st.session_state.search_trigger = False
+search_trigger = st.session_state.get("search_trigger", False)
 
-# Initialize the query session state
-if 'query_input' not in st.session_state:
-    st.session_state.query_input = ''
-
-# Define a function to trigger search when text input changes or button is pressed
 def trigger_search():
     st.session_state.search_trigger = True
 
-# Capture input and trigger search on Enter or when search button is clicked
 query = st.text_input("Topic", placeholder="e.g., Large Language Models in Healthcare", on_change=trigger_search, key="query_input")
 
-# Manually trigger search with the button click
+# Search button (manually resets trigger to True)
 if st.button("🔎 Search"):
     st.session_state.search_trigger = True
 
