@@ -71,7 +71,11 @@ st.markdown(
 )
 
 # Title and intro
-st.markdown("<h1>📚 Virtual Research Assistant</h1>", unsafe_allow_html=True)
+st.markdown(
+    "<h1>📚 Zyntra: <span style=\"font-weight: normal;\">Virtual Research Assistant</span></h1>",
+    unsafe_allow_html=True
+)
+
 st.markdown("<p>Find, summarize, and analyze top research papers on any topic!</p>", unsafe_allow_html=True)
 st.markdown("---")
 
